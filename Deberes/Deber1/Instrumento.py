@@ -113,12 +113,14 @@ def actualizar_instrumentos(instrumento, nuevo_dato):
     primer_termino = lista.index(instrumento)
     instrumento.update(nuevo_dato)
     lista[primer_termino] = instrumento
-    print("Actualizando mascota")
+    #print(lista)
+    transformar_lista_a_cadenatexto(lista)
+    print("Actualizando dato")
     
 def transformar_lista_a_cadenatexto(lista):
     cadena = []
     for instrumento in lista:
-        linea = f"{lista['codigo']},{lista['instrumento']},{lista['color']}"
+        linea = f"{instrumento['codigo']},{instrumento['codigoT']},{instrumento['instrumento']},{instrumento['color']}"
         cadena.append(linea)
     agregar_datos('./instrumentos.txt', 'w', *cadena)
     
