@@ -51,9 +51,10 @@ def buscar():
 def mostrar_presentacion_general():
     lista = Instrumento.obtener_lista_tipos_instrumentos()
     for instrumento in lista:
-        inst = instrumento.get('codigo')
+        inst = instrumento.get('codigoT')
         i= int(inst)
         instrumento_a_buscar=Instrumento.obtener_instrumento_por_codigo_tipo(inst)
+        print(instrumento_a_buscar)
         instrumentos = int(instrumento_a_buscar.get('codigoT'))
         if  i == instrumentos:
             print('Codigo',' Tipo de instrumento',' Instrumento', '  Color')
