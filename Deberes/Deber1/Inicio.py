@@ -62,11 +62,12 @@ def mostrar_presentacion_general():
     
 def eliminar():
     print("\tEliminar Instrumento\t")
-    code = input("Ingrese el codigo de mascota a eliminar: ")
+    code = input("Ingrese el codigo de instrumento a eliminar: ")
     lista = Instrumento.obtener_lista_instrumentos()
     instrumento_a_eliminar = Instrumento.obtener_instrumento_por_codigo(code)
     if instrumento_a_eliminar != None:
         lista.remove(instrumento_a_eliminar)
+    Instrumento.transformar_lista_a_cadenatexto(lista)
     print(f"Se ha eliminado")
     
 def crear():
