@@ -22,7 +22,7 @@ def obtener_lista_tipos_instrumentos():
 def tokenizar_cadena_tipo(cadena):
         token = (cadena + "").replace("\n", "").split(',')
         instrumento = {
-            'codigo': token[0],
+            'codigoT': token[0],
             'instrumento': token[1],
         }
         return instrumento
