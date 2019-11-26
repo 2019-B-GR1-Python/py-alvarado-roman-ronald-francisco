@@ -101,6 +101,30 @@ ciudades_uno.sort_values(ascending = False).head(2)
 
 
 
+# 0 - 1000 5%
+# 1001 - 5000 10%
+# 5001 - 20000 15%
+
+def calculo(valor):
+    if(valor <= 1000):
+        return valor * 1.05
+    if(valor > 1000 and valor <= 5000):
+        return valor * 1.100
+    if(valor > 5000):
+        return valor * 1.15
+    
+ciudades_uno.map(calculo)
+
+ciudad_calculada = ciudades_uno.map(calculo)
+
+# Cuando No cumplela condicion 
+# Aplica la formula
+ciudades_uno.where(ciudades_uno > 1000, 
+                   ciudades_uno * 1.05)
+
+
+
+
 
 
 
