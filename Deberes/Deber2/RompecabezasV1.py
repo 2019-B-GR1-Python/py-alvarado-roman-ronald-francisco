@@ -75,10 +75,10 @@ def main(pepe):
     ss1 = mezclar_elementos_matriz(ss,4)
     graficar(pepe,ss1)
     muestra_matriz = np.arange(16).reshape(4,4)
-    print(muestra_matriz)
-    mov_ini = input("ingrese la posicion de entrada: ")
-    mov_fin = input("ingrese la posicion de la salida: ")
-    ss2 = movimiento(ss1,muestra_matriz,mov_ini,mov_fin)
-    graficar_mov(ss2,4)
+    while True:
+        mov_ini = input("Ingrese la posicion de entrada: ")
+        mov_fin = input("Ingrese la posicion de la salida: ")
+        ss2 = movimiento(ss1,muestra_matriz,mov_ini,mov_fin)
+        graficar_mov(ss2,4)
 
 main(rana_pepe)
