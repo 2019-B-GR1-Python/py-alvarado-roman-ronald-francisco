@@ -35,11 +35,10 @@ writer = pd.ExcelWriter(path_multiple, engine = 'xlsxwriter')
 df.to_excel(writer, sheet_name = 'Primera')
 df.to_excel(writer, sheet_name = 'Segunda', index = False)
 df.to_excel(writer, sheet_name = 'Tercera', columns = columnas)
-
 writer.save()
 
 numero_artistas = df['artist'].value_counts()
-path_colores = './mi_df_colores.xlsx'
+path_colores = './data/mi_df_colores.xlsx'
 writer = pd.ExcelWriter(path_colores, engine = 'xlsxwriter')
 
 numero_artistas.to_excel(writer, sheet_name = 'Artistas')
@@ -55,9 +54,27 @@ formato_artistas = {
         "max_value": "99",
         "max_type":"percentile"}
 
-hoja_artistas.conditional_format(rango_celdas,formato_artistas)
+hojas_artistas.conditional_format(rango_celdas,formato_artistas)
 
 writer.save()
+
+workbook = xlsxwriter.Workbook('./data/chart_line.xlsx')
+worksheet = workbook.add_worksheet()
+
+# Add the worksheet data to be plotted.
+data = numero_artistas.values
+worksheet.write_column('A1', data)
+
+# Create a new chart object.
+chart = workbook.add_chart({'type': 'line'})
+
+# Add a series to the chart.
+chart.add_series({'values': '=Sheet1!$A$1:$A$6'})
+
+# Insert the chart into the worksheet.
+worksheet.insert_chart('C1', chart)
+
+workbook.close()
 
 
 
