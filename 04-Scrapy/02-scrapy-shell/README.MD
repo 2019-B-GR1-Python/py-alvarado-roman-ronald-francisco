@@ -60,3 +60,4 @@ $ response.css('.tags .tag::text').extract()
 ```
 $ response.css('div.tags > a.tag::attr(href)').extract()
 ```
+$ response.css()
