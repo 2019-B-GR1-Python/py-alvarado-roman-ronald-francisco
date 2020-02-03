@@ -1,6 +1,5 @@
 # arania_fybeca.py
 import scrapy
-#from arania_fybeca.items import ProductoFybeca
 from arania_fybeca.items import ProductoFybeca
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst
@@ -25,7 +24,7 @@ class AraniaFybeca(scrapy.Spider):
                     item = ProductoFybeca(),
                     selector = producto
                 )
-                #producto_loader.default_output_processor = TakeFirst()
+                producto_loader.default_output_processor = TakeFirst()
 
                 producto_loader.add_css(
                     'titulo',
@@ -37,4 +36,4 @@ class AraniaFybeca(scrapy.Spider):
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
                 )
 
-                yield producto_loader._local_item()
+                yield producto_loader.load_item()
